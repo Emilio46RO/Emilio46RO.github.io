@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotiExpress</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #BBBDB7;
+      text-align: center;
+    }
+
+    header {
+      color: white;
+      padding: 20px;
+    }
+
+    /*************** Nuevo estilo para el título **********/
+
+    .slogan {
+      font-size: 6vw;
+      font-weight: bold;
+      color: #4DFFFF; /********* Azul neon ********/
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /********** Sombra *********/
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 4.5vw;
+      color: #333;
+    }
+
+    img {
+      max-width: 90%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="imagenes/logo.jpeg" alt="Logo NotiExpress" style="width: 700px;">
+  <!-- Se agregó la clase "slogan" al título -->
+  <h2 class="slogan">CDMX, las noticias sin filtro</h2>
+</header>
+
+<div id="main">
+  <p>En esta página, te enterarás de todos los sucesos del día a día en tu lugar, CDMX.</p>
+
+  <div>
+    <img src="imagenes/c.jpeg" alt="Noticias Policiacas" onclick="changePage('Policiaca')">
+    <p>Policiaca</p>
+  </div>
+
+  <div>
+    <img src="imagenes/b.jpeg" alt="Noticias Sociales" onclick="changePage('Social')">
+    <p>Social</p>
+  </div>
+
+  <div>
+    <img src="imagenes/a.jpeg" alt="Noticias Políticas" onclick="changePage('Política')">
+    <p>Política</p>
+  </div>
+
+  <div>
+    <img src="imagenes/d.jpeg" alt="Noticias Deportivas" onclick="changePage('Deportes')">
+    <p>Deportes</p>
+  </div>
+</div>
+
+<div id="content" class="section"></div>
+
+<footer>
+  <img src="imagenes/pie de pag.jpeg" alt="Pie de página" style="width: 100%; max-width: 1500px;">
+</footer>
+
+<script>
+  function changePage(sectionTitle) {
+    document.getElementById("main").style.display = "none";
+
+    let noticia = "";
+
+    switch (sectionTitle) {
+      case 'Policiaca':
+        noticia = `
+          <h2>Policiaca</h2>
+          <p>Un operativo en Naucalpan  dejó sin vida a un presunto ladron debido a robo en el centro comercial.</p>
+          <img src="imagenes/policiaca.jpg" alt="Operativo Policiaco">
+        `;
+        break;
+      case 'Social':
+        noticia = `
+          <h2>Social</h2>
+          <p>Vecinos de la colonia Roma organizaron un festival cultural para promover el arte urbano y la convivencia vecinal.</p>
+          <img src="imagenes/social.jpg" alt="Evento social en la Roma">
+        `;
+        break;
+      case 'Política':
+        noticia = `
+          <h2>Política</h2>
+          <p>El Congreso de la CDMX aprobó nuevas reformas en materia de movilidad, priorizando al peatón y transporte público.</p>
+          <img src="imagenes/politica.jpg" alt="Congreso de CDMX">
+        `;
+        break;
+      case 'Deportes':
+        noticia = `
+          <h2>Deportes</h2>
+          <p>El equipo de fútbol del toluca avanzó a la final tras una dramática tanda de penales en el Estadio Olímpico Universitario.</p>
+          <img src="imagenes/deportes.jpg" alt="Celebración Pumas">
+        `;
+        break;
+    }
+
+    document.getElementById("content").innerHTML = `
+      ${noticia}
+      <button class="back-btn" onclick="goBack()">Regresar</button>
+    `;
+    
+    document.getElementById("content").classList.add("active");
+  }
+
+  function goBack() {
+    document.getElementById("content").classList.remove("active");
+    document.getElementById("main").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
