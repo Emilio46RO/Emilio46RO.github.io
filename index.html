@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NotiExpress</title>
   <style>
     body {
       margin: 0;
       padding: 20px;
       font-family: Arial, sans-serif;
-      background-color: #BBBDB7;
+      background-color: #000;
       text-align: center;
+      color: white;
     }
 
     header {
@@ -18,26 +19,24 @@
       padding: 20px;
     }
 
-    /*************** Nuevo estilo para el título **********/
-
     .slogan {
       font-size: 6vw;
       font-weight: bold;
-      color: #4DFFFF; /********* Azul neon ********/
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /********** Sombra *********/
+      color: #4DFFFF;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
       margin-top: 10px;
       margin-bottom: 0;
     }
 
     p {
       font-size: 4.5vw;
-      color: #333;
+      color: #ddd;
     }
 
     img {
       max-width: 90%;
       height: auto;
-      margin-top: 20px;
+      margin-top: 10px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       cursor: pointer;
@@ -47,6 +46,7 @@
       display: none;
       padding: 20px;
       background-color: white;
+      color: black;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-top: 20px;
@@ -67,88 +67,101 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: #4DFFFF;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
-
 <header>
-  <img src="logo.jpg" alt="Logo NotiExpress" style="width: 700px;">
-  <!-- Se agregó la clase "slogan" al título -->
+  <img src="imagenes/logo.jpeg" alt="Logo NotiExpress" style="width: 700px;">
   <h2 class="slogan">CDMX, las noticias sin filtro</h2>
 </header>
 
 <div id="main">
-  <p>En esta página, te enterarás de todos los sucesos del día a día en tu lugar, CDMX.</p>
-
-  <div>
-    <img src="policia.jpg" alt="Noticias Policiacas" onclick="changePage('Policiaca')">
+  <a href="#" onclick="changePage('Policiaca')">
     <p>Policiaca</p>
-  </div>
+    <img src="imagenes/c.jpeg" alt="Noticias Policiacas">
+  </a>
 
-  <div>
-    <img src="social.jpg" alt="Noticias Sociales" onclick="changePage('Social')">
+  <a href="#" onclick="changePage('Social')">
     <p>Social</p>
-  </div>
+    <img src="imagenes/b.jpeg" alt="Noticias Sociales">
+  </a>
 
-  <div>
-    <img src="politicap.jpg" alt="Noticias Políticas" onclick="changePage('Política')">
+  <a href="#" onclick="changePage('Política')">
     <p>Política</p>
-  </div>
+    <img src="imagenes/a.jpeg" alt="Noticias Políticas">
+  </a>
 
-  <div>
-    <img src="deportes.jpg" alt="Noticias Deportivas" onclick="changePage('Deportes')">
+  <a href="#" onclick="changePage('Deportes')">
     <p>Deportes</p>
-  </div>
+    <img src="imagenes/d.jpeg" alt="Noticias Deportivas">
+  </a>
 </div>
 
 <div id="content" class="section"></div>
 
 <footer>
-  <img src="pp.jpg" alt="Pie de página" style="width: 100%; max-width: 1500px;">
+  <img src="imagenes/pie de pag.jpeg" alt="Pie de página" style="width: 100%; max-width: 1500px;">
 </footer>
 
+<section id="comentarios" style="margin-top: 50px;">
+  <h2 style="color:#4DFFFF;">Comentarios</h2>
+  <textarea id="comentarioInput" placeholder="Escribe tu comentario aquí" style="width:80%;height:100px;padding:10px;"></textarea><br>
+  <button onclick="guardarComentario()" class="back-btn">Guardar Comentario</button>
+  <div id="comentariosGuardados" style="margin-top:20px;"></div>
+</section>
+
+<section id="historial" style="margin-top: 50px;">
+  <h2 style="color:#4DFFFF;">Historial de Comentarios</h2>
+  <div id="historialComentarios" style="margin-top:20px;"></div>
+</section>
+
 <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    mostrarComentarios();
+  });
+
   function changePage(sectionTitle) {
     document.getElementById("main").style.display = "none";
-
     let noticia = "";
-
     switch (sectionTitle) {
       case 'Policiaca':
         noticia = `
           <h2>Policiaca</h2>
-          <p>Un operativo en Naucalpan  dejó sin vida a un presunto ladron debido a robo en el centro comercial.</p>
-          <img src="policiaca.jpg" alt="Operativo Policiaco">
+          <p>Un operativo en Naucalpan dejó sin vida a un presunto ladrón debido a robo en el centro comercial.</p>
+          <img src="imagenes/policiaca.jpg" alt="Operativo Policiaco">
         `;
         break;
       case 'Social':
         noticia = `
           <h2>Social</h2>
-          <p>Vecinos de la colonia Roma organizaron un festival cultural para promover el arte urbano y la convivencia vecinal.</p>
-          <img src="socialp.jpg" alt="Evento social en la Roma">
+          <p>Vecinos de la colonia Roma organizaron un festival cultural para promover el arte urbano y la convivencia vecinal el 26 de mayo del 2025 en la CDMX.</p>
+          <img src="imagenes/social.jpg" alt="Evento social en la Roma">
         `;
         break;
       case 'Política':
         noticia = `
           <h2>Política</h2>
-          <p>El Congreso de la CDMX aprobó nuevas reformas en materia de movilidad, priorizando al peatón y transporte público.</p>
-          <img src="politica.jpg" alt="Congreso de CDMX">
+          <p>El dia 26 de abril del 2025, el Congreso de la CDMX aprobó nuevas reformas en materia de movilidad, priorizando al peatón y transporte público.</p>
+          <img src="imagenes/politica.jpg" alt="Congreso de CDMX">
         `;
         break;
       case 'Deportes':
         noticia = `
           <h2>Deportes</h2>
-          <p>El equipo de fútbol del toluca avanzó a la final tras una dramática tanda de penales en el Estadio Olímpico Universitario.</p>
-          <img src="deportesn.jpg" alt="Celebración Pumas">
+          <p>El 26 de mayo del año presente, el equipo de fútbol del Toluca avanzó a la final tras una dramática tanda de penales en el Estadio Olímpico Universitario.</p>
+          <img src="imagenes/deportes.jpg" alt="Celebración Toluca">
         `;
         break;
     }
 
-    document.getElementById("content").innerHTML = `
-      ${noticia}
-      <button class="back-btn" onclick="goBack()">Regresar</button>
-    `;
-    
+    document.getElementById("content").innerHTML = noticia + `<button class="back-btn" onclick="goBack()">Regresar</button>`;
     document.getElementById("content").classList.add("active");
   }
 
@@ -156,7 +169,35 @@
     document.getElementById("content").classList.remove("active");
     document.getElementById("main").style.display = "block";
   }
-</script>
 
+  function guardarComentario() {
+    const input = document.getElementById("comentarioInput").value.trim();
+    if (!input) return;
+    const comentarios = JSON.parse(localStorage.getItem("comentarios") || "[]");
+    comentarios.push(input);
+    localStorage.setItem("comentarios", JSON.stringify(comentarios));
+    document.getElementById("comentarioInput").value = "";
+    mostrarComentarios();
+  }
+
+  function mostrarComentarios() {
+    const comentarios = JSON.parse(localStorage.getItem("comentarios") || "[]");
+    const recientes = document.getElementById("comentariosGuardados");
+    const historial = document.getElementById("historialComentarios");
+
+    if (!comentarios.length) {
+      recientes.innerHTML = "<p>No hay comentarios recientes.</p>";
+      historial.innerHTML = "<p>No hay comentarios guardados.</p>";
+      return;
+    }
+
+    recientes.innerHTML = "<h3>Comentarios recientes:</h3><p>" +
+      comentarios[comentarios.length - 1] + "</p>";
+
+    historial.innerHTML = comentarios.map((c, i) =>
+      `<p><strong>${i + 1}.</strong> ${c}</p>`).join("");
+  }
+</script>
 </body>
 </html>
+
