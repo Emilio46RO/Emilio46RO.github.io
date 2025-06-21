@@ -74,6 +74,10 @@
       color: #4DFFFF;
       margin-bottom: 30px;
     }
+
+    .noticia-texto {
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -107,7 +111,7 @@
 <div id="content" class="section"></div>
 
 <footer>
-  <img src="PP.jpg" alt="Pie de página" style="width: 100%; max-width: 1500px;">
+  <img src="contacto.jpg" alt="Pie de página" style="width: 100%; max-width: 1500px;">
 </footer>
 
 <section id="comentarios" style="margin-top: 50px;">
@@ -134,28 +138,28 @@
       case 'Policiaca':
         noticia = `
           <h2>Policiaca</h2>
-          <p>Un operativo en Naucalpan dejó sin vida a un presunto ladrón debido a robo en el centro comercial.</p>
+          <p class="noticia-texto">El 6 de abril, Un operativo en Naucalpan dejó sin vida a un presunto ladrón debido a robo en el centro comercial.</p>
           <img src="policiaca.jpg" alt="Operativo Policiaco">
         `;
         break;
       case 'Social':
         noticia = `
           <h2>Social</h2>
-          <p>Vecinos de la colonia Roma organizaron un festival cultural para promover el arte urbano y la convivencia vecinal el 26 de mayo del 2025 en la CDMX.</p>
+          <p class="noticia-texto">Vecinos de la colonia Roma organizaron un festival cultural para promover el arte urbano y la convivencia vecinal el 26 de mayo del 2025 en la CDMX.</p>
           <img src="socialp.jpg" alt="Evento social en la Roma">
         `;
         break;
       case 'Política':
         noticia = `
           <h2>Política</h2>
-          <p>El dia 26 de abril del 2025, el Congreso de la CDMX aprobó nuevas reformas en materia de movilidad, priorizando al peatón y transporte público.</p>
+          <p class="noticia-texto">El día 26 de abril del 2025, el Congreso de la CDMX aprobó nuevas reformas en materia de movilidad, priorizando al peatón y transporte público.</p>
           <img src="politica.jpg" alt="Congreso de CDMX">
         `;
         break;
       case 'Deportes':
         noticia = `
           <h2>Deportes</h2>
-          <p>El 26 de mayo del año presente, el equipo de fútbol del Toluca avanzó a la final tras una dramática tanda de penales en el Estadio Olímpico Universitario.</p>
+          <p class="noticia-texto">El 26 de mayo del año presente, el equipo de fútbol del Toluca avanzó a la final tras una dramática tanda de penales en el Estadio Olímpico Universitario.</p>
           <img src="deportesn.jpg" alt="Celebración Toluca">
         `;
         break;
@@ -200,4 +204,3 @@
 </script>
 </body>
 </html>
-
